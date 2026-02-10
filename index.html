@@ -15,7 +15,7 @@
     }
     .slider {
       display: flex;
-      width: 800vw;
+      width: 1000vw;
       height: 100vh;
       transition: transform 1s ease-in-out;
     }
@@ -84,7 +84,19 @@
 </head>
 <body>
 
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="slider" id="slider">
+
+    <!-- Slide 0: Personal Photo -->
+    <section class="slide">
+      <h1>Us 🖤</h1>
+      <img src="photo1.jpg" style="width:260px;border-radius:20px;box-shadow:0 0 30px rgba(255,255,255,0.3);margin-top:20px;" />
+      <p style="margin-top:25px;">Every favorite memory of mine has you in it, Jitesh.</p>
+    </section>
 
     <!-- Slide 1 -->
     <section class="slide">
@@ -153,6 +165,11 @@
   <script>
     let index = 0;
     const slider = document.getElementById('slider');
+
+    // Start music after first interaction (mobile safe)
+    document.body.addEventListener('click', () => {
+      document.getElementById('bgMusic').play();
+    }, { once: true });
 
     function updateSlide() {
       slider.style.transform = `translateX(-${index * 100}vw)`;
